@@ -64,9 +64,11 @@ Update `appsettings.json` (or `appsettings.Development.json`) before running:
 
 Base path: `/Service`
 
-- `GET /Service/GetServiceStatus` — Returns the service status.
-- `POST /Service/StartService` — Starts the service (and sets start mode to Automatic).
-- `POST /Service/StopService` — Stops the service (and sets start mode to Manual).
+- `GET /Service/GetServiceStatus` – Returns the service status.
+- `POST /Service/StartService` – Starts the service and sets its start mode to **Automatic** via WMI `ChangeStartMode`.
+- `POST /Service/StopService` – Stops the service and sets its start mode to **Manual** via WMI `ChangeStartMode`.
+
+> Note: Changing start mode uses the WMI `Win32_Service.ChangeStartMode` method and requires the hosting identity to have permission to modify the service configuration.
 
 ### Example responses
 
